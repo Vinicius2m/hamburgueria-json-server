@@ -6,6 +6,28 @@
       "name": "Kenzinho",
       "age": 38,
       "id": 1
+    },
+    {
+      "email": "exe@email.com",
+      "password": "$2a$10$1rjyRr1RZblp9DVmWhoqdO9IT4GHHEtId0Mj5HdpwkWSje0eRJYKy",
+      "name": "Exemplo",
+      "id": 2
+    }
+  ],
+  "animes": [
+    {
+      "category": "Shonen",
+      "anime": "Dragon Ball Z",
+      "userId": 2,
+      "id": 1
+    }
+  ],
+  "myAnimes": [
+    {
+      "category": "Shonen",
+      "anime": "Dragon Ball Z",
+      "userId": 2,
+      "id": 1
     }
   ]
 }
