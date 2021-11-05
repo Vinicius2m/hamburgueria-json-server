@@ -1,24 +1,110 @@
-# json-server-base
+# JSON-server-hamburgueria
 
-Esse é o repositório com a base de JSON-Server + JSON-Server-Auth já configurada, feita para ser usada no desenvolvimento das API's nos Capstones do Q2.
+A api tem um total de 5 endpoints.
 
-## Endpoints
+URL base:
 
-Assim como a documentação do JSON-Server-Auth traz (https://www.npmjs.com/package/json-server-auth), existem 3 endpoints que podem ser utilizados para cadastro e 2 endpoints que podem ser usados para login.
+## Endpoints:
 
 ### Cadastro
 
-POST /register <br/>
-POST /signup <br/>
-POST /users
+`POST/register`
 
-Qualquer um desses 3 endpoints irá cadastrar o usuário na lista de "Users", sendo que os campos obrigatórios são os de email e password.
-Você pode ficar a vontade para adicionar qualquer outra propriedade no corpo do cadastro dos usuários.
+Para fazer uma conta, no corpo da requisição são obrigatórios os três campos abaixo
 
+```json
+{
+    "email": "exemplo@email.com",
+    "password": "123456",
+    "name": "Exemplo"
+}
+```
+
+Caso a operação for bem sucedida a resposta será parecida com esta:
+
+```json
+{
+  "accessToken": token,
+  "user": {
+    "email": "exemplo@email.com",
+    "name": "Exemplo",
+    "id": 3
+  }
+}
+```
 
 ### Login
 
-POST /login <br/>
-POST /signin
+`POST /login`
 
-Qualquer um desses 2 endpoints pode ser usado para realizar login com um dos usuários cadastrados na lista de "Users"
+Na requisição de login será necessário estes campos:
+
+```json
+{
+    "email": "exemplo@email.com",
+    "password": "123456"
+}
+```
+
+E a resposta será
+
+```json
+{
+  "accessToken": token,
+  "user": {
+    "email": "exemplo@email.com",
+    "name": "Exemplo",
+    "id": 3
+  }
+}
+```
+
+### Produtos
+
+`GET /products`
+
+Este end-point irá retornar todos os produtos da API, para usá-lo não precisa de nenhum tipo de autorização e também de nenhum corpo na requisição.
+
+### Carrinho de compras
+
+`POST /cart`
+
+Para adicionar um produto ao carrinho, use este endpoint e passe o token dessa forma:
+
+```json
+{
+    "Authorization": { "Bearer token"}
+}
+```
+
+E como próxima informação, passe os dados do produto seguindo o modelo abaixo
+
+```json
+{
+    "name": "Mc Sundae",
+    "category": "Sobremesas",
+    "price": 5,
+    "img": "link",
+    "userId": 2
+}
+```
+
+`GET /cart?userId=id`
+
+Para ver o carrinho com os produtos, use esse endpoint, nele é passado o userId do usuário logado como Query Params. Passe o token com autorização
+
+```json
+{
+    "Authorization": { "Bearer token"}
+}
+```
+
+`DEL /cart/productId`
+
+Para excluir um produto, use esse endpoint, nele é passado o productId do produto a ser excluído como Query Params. Passe o token com autorização dessa forma:
+
+```json
+{
+    "Authorization": { "Bearer token"}
+}
+```
