@@ -2,7 +2,7 @@
 
 A api tem um total de 5 endpoints.
 
-URL base: https://json-hamburgueria-server.herokuapp.com/
+URL base: https://hamburgueria-json-server-production.up.railway.app/
 
 ## Endpoints:
 
